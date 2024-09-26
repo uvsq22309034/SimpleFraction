@@ -7,11 +7,25 @@ public class Main {
 		// Activer les assertions
         ClassLoader.getSystemClassLoader().setDefaultAssertionStatus(true);
 
-     // Test de création de fractions
-        Fraction f1 = new Fraction(1, 2); // 1/2
-        Fraction f2 = new Fraction(3, 4); // 3/4
-//System.out.println(f1);
-assert f1.toString().equals("Je suis une fraction") : "Erreur c'est n'est pas une fraction";
+     // Test du constructeur avec numérateur et dénominateur
+        Fraction f1 = new Fraction(3, 4);
+        assert f1.toString().equals("3/4") : "Erreur : 3/4 attendu, mais obtenu " + f1;
+
+        // Test du constructeur avec juste le numérateur (dénominateur = 1)
+        Fraction f2 = new Fraction(5);
+        assert f2.toString().equals("5") : "Erreur : 5 attendu, mais obtenu " + f2;
+
+        // Test du constructeur sans argument (fraction par défaut)
+        Fraction f3 = new Fraction();
+        assert f3.toString().equals("0") : "Erreur : 0 attendu, mais obtenu " + f3;
+
+        // Test du dénominateur égal à 1 (pas d'affichage de "/1")
+        Fraction f5 = new Fraction(10, 1);
+        assert f5.toString().equals("10") : "Erreur : 10 attendu, mais obtenu " + f5;
+
+        System.out.println("Tous les tests sont passés avec succès !");
+    }
+
 	}
 
-}
+

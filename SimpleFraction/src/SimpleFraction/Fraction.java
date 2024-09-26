@@ -4,8 +4,29 @@ public class Fraction {
 	
 	private int numerator;
     private int denominator;
+    
+    
+ // Constantes pour les fractions 0/1 et 1/1
+    public static final Fraction ZERO = new Fraction(0, 1);
+    public static final Fraction UN = new Fraction(1, 1);
+    
+    public int getNumerator() {
+		return numerator;
+	}
 
-    /// Constructeur avec numérateur et dénominateur
+	public void setNumerator(int numerator) {
+		this.numerator = numerator;
+	}
+
+	public int getDenominator() {
+		return denominator;
+	}
+
+	public void setDenominator(int denominator) {
+		this.denominator = denominator;
+	}
+
+	// Constructeur avec numérateur et dénominateur
     public Fraction(int numerator, int denominator) {
         if (denominator == 0) {
             throw new IllegalArgumentException("Le dénominateur ne peut pas être zéro.");
@@ -33,5 +54,10 @@ public class Fraction {
             return numerator + "/" + denominator;
         }
     }
+ // Méthode pour obtenir la valeur en double
+    public double doubleValue() {
+        return (double) numerator / denominator;
+    }
+    
 
 }

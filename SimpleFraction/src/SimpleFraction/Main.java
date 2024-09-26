@@ -22,6 +22,14 @@ public class Main {
         // Test du dénominateur égal à 1 (pas d'affichage de "/1")
         Fraction f5 = new Fraction(10, 1);
         assert f5.toString().equals("10") : "Erreur : 10 attendu, mais obtenu " + f5;
+        
+        // Test de la méthode doubleValue avec une fraction 3/4
+        Fraction f4 = new Fraction(3, 4);
+        assert Math.abs(f4.doubleValue() - 0.75) < 0.0001 : "Erreur : 0.75 attendu, mais obtenu " + f4.doubleValue();
+
+        // Test de la méthode doubleValue avec une fraction 1/2
+        Fraction f6 = new Fraction(1, 2);
+        assert Math.abs(f6.doubleValue() - 0.5) < 0.0001 : "Erreur : 0.5 attendu, mais obtenu " + f6.doubleValue();
 
         System.out.println("Tous les tests sont passés avec succès !");
     }

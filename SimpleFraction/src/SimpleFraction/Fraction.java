@@ -33,6 +33,7 @@ public class Fraction {
         }
         this.numerator = numerator;
         this.denominator = denominator;
+        simplify();
     }
 
     // Constructeur avec seulement le numérateur (dénominateur égal à 1)
@@ -58,6 +59,51 @@ public class Fraction {
     public double doubleValue() {
         return (double) numerator / denominator;
     }
+    // Méthode pour additionner deux fractions 
+    public Fraction add(Fraction other) {
+        int num = this.numerator * other.denominator + other.numerator * this.denominator;
+        int den = this.denominator * other.denominator;
+        return new Fraction(num, den);
+    }
+    
+ // Méthode pour simplifier la fraction
+    private void simplify() {
+        int gcd = gcd(numerator, denominator);  // Trouver le plus grand commun diviseur (PGCD)
+        numerator /= gcd;
+        denominator /= gcd;
+        // Gérer le signe du dénominateur : toujours garder le signe sur le numérateur
+        if (denominator < 0) {
+            numerator = -numerator;
+            denominator = -denominator;
+        }
+    }
+
+    // Méthode pour calculer le PGCD (Algorithme d'Euclide)
+    private int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+    
+    // Redéfinition de la méthode equals pour tester l'égalité des fractions
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;  // Vérifie si les deux références pointent vers le même objet
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false; // Si l'objet est null ou de type différent, ils ne sont pas égaux
+        }
+        Fraction other = (Fraction) obj;
+
+        // Simplification automatique déjà effectuée, on compare simplement les numérateurs et dénominateurs
+        return this.numerator == other.numerator && this.denominator == other.denominator;
+    }
+
+    // Redéfinition de hashCode pour être compatible avec equals
+    @Override
+    public int hashCode() {
+        return 31 * numerator + denominator;  // Génère un code de hachage basé sur le numérateur et le dénominateur
+    }
+
     
 
 }

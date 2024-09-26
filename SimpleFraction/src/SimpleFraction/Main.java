@@ -31,6 +31,28 @@ public class Main {
         Fraction f6 = new Fraction(1, 2);
         assert Math.abs(f6.doubleValue() - 0.5) < 0.0001 : "Erreur : 0.5 attendu, mais obtenu " + f6.doubleValue();
 
+     // Test addition
+        Fraction resultAdd = f1.add(f2); // 1/2 + 3/4 = 5/4
+        assert resultAdd.toString().equals("5/4") : "Erreur dans l'addition";
+        
+        // Test d'égalité de fractions égales
+        Fraction f7 = new Fraction(1, 2);
+        Fraction f8 = new Fraction(2, 4); // Equivalent à 1/2
+        assert f7.equals(f8) : "Erreur : f1 et f2 devraient être égales";
+
+        // Test d'égalité avec une fraction simplifiée automatiquement
+        Fraction f9 = new Fraction(4, 8); // Simplifiée en 1/2
+        assert f7.equals(f9) : "Erreur : f1 et f3 devraient être égales";
+
+        // Test d'inégalité entre fractions différentes
+        Fraction f10 = new Fraction(3, 4);
+        assert !f1.equals(f10) : "Erreur : f1 et f4 ne devraient pas être égales";
+
+        // Test d'égalité avec ZERO et UN
+        assert Fraction.ZERO.equals(new Fraction(0, 1)) : "Erreur : Fraction.ZERO et 0/1 devraient être égales";
+        assert Fraction.UN.equals(new Fraction(1, 1)) : "Erreur : Fraction.UN et 1/1 devraient être égales";
+
+        
         System.out.println("Tous les tests sont passés avec succès !");
     }
 

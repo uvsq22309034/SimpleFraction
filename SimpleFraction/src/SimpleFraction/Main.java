@@ -51,9 +51,13 @@ public class Main {
         // Test d'égalité avec ZERO et UN
         assert Fraction.ZERO.equals(new Fraction(0, 1)) : "Erreur : Fraction.ZERO et 0/1 devraient être égales";
         assert Fraction.UN.equals(new Fraction(1, 1)) : "Erreur : Fraction.UN et 1/1 devraient être égales";
-
+     
+        // Vérifiez avec le code ci-dessous
+        Number aNumber = java.math.BigDecimal.ONE;
+        Fraction anotherNumber =  new Fraction(1, 2);
+        assert java.lang.Math.abs(aNumber.doubleValue() + anotherNumber.doubleValue() - 1.5) < 1E-8;
         
-        System.out.println("Tous les tests sont passés avec succès !");
+       // System.out.println("Tous les tests sont passés avec succès !");
     }
 
 	}

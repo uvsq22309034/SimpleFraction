@@ -1,6 +1,6 @@
 package SimpleFraction;
 
-public class Fraction {
+public class Fraction extends Number implements Comparable<Fraction> {
 	
 	private int numerator;
     private int denominator;
@@ -56,7 +56,7 @@ public class Fraction {
         }
     }
  // Méthode pour obtenir la valeur en double
-    public double doubleValue() {
+    public double doubleValues() {
         return (double) numerator / denominator;
     }
     // Méthode pour additionner deux fractions 
@@ -103,6 +103,41 @@ public class Fraction {
     public int hashCode() {
         return 31 * numerator + denominator;  // Génère un code de hachage basé sur le numérateur et le dénominateur
     }
+ // Implémentation de la méthode compareTo pour l'ordre naturel des fractions
+    @Override
+    public int compareTo(Fraction other) {
+        // Comparer les fractions via le produit croisé : a/b <=> c/d revient à comparer a * d et b * c
+        long diff = (long) this.numerator * other.denominator - (long) other.numerator * this.denominator;
+        if (diff < 0) {
+            return -1; // La fraction courante est plus petite
+        } else if (diff > 0) {
+            return 1;  // La fraction courante est plus grande
+        } else {
+            return 0;  // Les fractions sont égales
+        }
+    }
+ // Implémentation des méthodes abstraites de java.lang.Number
+
+    @Override
+    public int intValue() {
+        return (int) doubleValue();  // Convertit la fraction en double puis en int
+    }
+
+    @Override
+    public long longValue() {
+        return (long) doubleValue();  // Convertit la fraction en double puis en long
+    }
+
+    @Override
+    public float floatValue() {
+        return (float) doubleValue();  // Convertit la fraction en double puis en float
+    }
+
+    @Override
+    public double doubleValue() {
+        return (double) numerator / denominator;  // Convertit la fraction en double
+    }
+
 
     
 
